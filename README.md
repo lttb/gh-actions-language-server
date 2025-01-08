@@ -17,7 +17,11 @@ _Note:_ This package may be archived and deprecated once native support for a `b
 To install globally via npm, run:
 
 ```sh
+# git
 npm i -g https://github.com/lttb/gh-actions-language-server
+
+# npm registry
+npm i -g gh-actions-language-server
 ```
 
 ## Configuration for Neovim
