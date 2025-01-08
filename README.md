@@ -1,17 +1,32 @@
 # gh-actions-language-server
-Github Actions Language Server
 
-An extremely thin wrapper around [@actions/languageserver](https://github.com/actions/languageservices/tree/main/languageserver) to make it easier to install and use in cli and LSP clients.
+**GitHub Actions Language Server**
+
+A lightweight wrapper around [@actions/languageserver](https://github.com/actions/languageservices/tree/main/languageserver) to simplify installation and usage in CLI tools and LSP (Language Server Protocol) clients.
+
+## Why?
+
+The `@actions/languageserver` module is published without an executable binary (see [issue #56](https://github.com/actions/languageservices/issues/56)), which makes it less convenient to use directly. This package bridges that gap by providing an easy-to-install binary.
+
+Initially, the plan was to contribute a pull request to `@actions/languageserver` to add a `bin` field. However, it seems that configuring package exports for this purpose requires some adjustments, so creating this standalone package was a quicker solution.
+
+*Note:* This package may be archived and deprecated once native support for a `bin` executable is added to `@actions/languageserver`.
 
 ## Installation
+
+To install globally via npm, run:
 
 ```sh
 npm i -g https://github.com/lttb/gh-actions-language-server
 ```
 
-## Neovim Language Server Configuration
+## Configuration for Neovim
 
-Using [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), define configuration for `gh_actions_ls`:
+If you're using [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), you can configure the `gh-actions-language-server` as follows:
+
+### Define the Language Server Configuration
+
+Create a new configuration file at `lua/lspconfig/configs/gh_actions_ls.lua` with the following content:
 
 <details>
 <summary>lua/lspconfig/configs/gh_actions_ls.lua</summary>
@@ -37,8 +52,16 @@ return {
 
 </details>
 
-Initialise the language server:
+
+### Initialize the Language Server
+
+Add the following code to initialize the language server:
 
 ```sh
 require('lspconfig').gh_actions_ls.setup({})
 ```
+
+
+## Credits
+
+- https://github.com/actions/languageservices

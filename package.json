@@ -3,13 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "bin": "./bin/gh-actions-language-server",
-  "main": "./index.js",
   "engines": {
     "node": ">=13.2.0"
   },
   "engineStrict": true,
   "files": [
-    "./index.js",
     "./bin/gh-actions-language-server"
   ],
   "dependencies": {
