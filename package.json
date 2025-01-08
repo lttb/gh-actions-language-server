@@ -1,7 +1,7 @@
 {
   "name": "gh-actions-language-server",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "bin": "./bin/gh-actions-language-server",
   "module": "index.js",
   "engines": {

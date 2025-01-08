@@ -10,7 +10,7 @@ The `@actions/languageserver` module is published without an executable binary (
 
 Initially, the plan was to contribute a pull request to `@actions/languageserver` to add a `bin` field. However, it seems that configuring package exports for this purpose requires some adjustments, so creating this standalone package was a quicker solution.
 
-*Note:* This package may be archived and deprecated once native support for a `bin` executable is added to `@actions/languageserver`.
+_Note:_ This package may be archived and deprecated once native support for a `bin` executable is added to `@actions/languageserver`.
 
 ## Installation
 
@@ -36,6 +36,7 @@ return {
   default_config = {
     cmd = {
       'gh-actions-language-server',
+      '--stdio',
     },
     filetypes = {
       'yaml',
@@ -52,7 +53,6 @@ return {
 
 </details>
 
-
 ### Initialize the Language Server
 
 Add the following code to initialize the language server:
@@ -60,7 +60,6 @@ Add the following code to initialize the language server:
 ```sh
 require('lspconfig').gh_actions_ls.setup({})
 ```
-
 
 ## Credits
 
