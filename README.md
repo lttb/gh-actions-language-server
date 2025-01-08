@@ -16,11 +16,13 @@ _Note:_ This package may be archived and deprecated once native support for a `b
 
 To install globally via npm, run:
 
+_from git_
 ```sh
-# git
 npm i -g https://github.com/lttb/gh-actions-language-server
+```
 
-# npm registry
+_from npm registry_
+```
 npm i -g gh-actions-language-server
 ```
 
@@ -61,7 +63,7 @@ return {
 
 Add the following code to initialize the language server:
 
-```sh
+```lua
 require('lspconfig').gh_actions_ls.setup({})
 ```
 
