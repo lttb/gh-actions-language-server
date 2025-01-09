@@ -1,5 +1,6 @@
 {
 	"name": "gh-actions-language-server",
+	"license": "MIT",
 	"type": "commonjs",
 	"version": "0.0.2",
 	"bin": "./bin/gh-actions-language-server",
