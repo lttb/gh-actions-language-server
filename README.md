@@ -71,15 +71,12 @@ return {
 https://github.com/lttb/gh-actions-language-server
 Language server for GitHub Actions.
 `gh-actions-language-server` can be installed via `npm`:
-
 ```sh
 npm install -g gh-actions-language-server
 ```
-
 ]],
-},
+  },
 }
-
 ````
 
 #### Initialise the Language Server
