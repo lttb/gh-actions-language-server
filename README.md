@@ -22,40 +22,69 @@ npm install --global gh-actions-language-server
 
 ## Configuration for Neovim
 
+### Add `yaml.github` filetype detection
+
+Create a a file at `ftdetect/github-actions.lua` with:
+
+```lua
+vim.filetype.add({
+  pattern = {
+    ['.*/%.github[%w/]+workflows[%w/]+.*%.ya?ml'] = 'yaml.github',
+  },
+})
+```
+
+### Configure Language Server
+
+> [!NOTE]
+> Once these PRs get merged, `mason` and `nvim-lspconfig` should support `gh-actions-language-server` out of the box:
+>
+> - https://github.com/neovim/nvim-lspconfig/pull/3551
+> - https://github.com/williamboman/mason-lspconfig.nvim/pull/506
+> - https://github.com/mason-org/mason-registry/pull/8497
+
 If you're using [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), you can configure the `gh-actions-language-server` as follows:
 
-### Define the Language Server Configuration
+#### Define the Language Server Configuration
 
 Create a new configuration file at `lua/lspconfig/configs/gh_actions_ls.lua` with the following content:
 
-<details>
-<summary>lua/lspconfig/configs/gh_actions_ls.lua</summary>
+````lua
+local util = require('lspconfig.util')
 
-```lua
 return {
   default_config = {
-    cmd = {
-      'gh-actions-language-server',
-      '--stdio',
-    },
-    filetypes = {
-      'yaml',
-    },
+    cmd = { 'gh-actions-language-server', '--stdio' },
+    filetypes = { 'yaml.github' },
+    root_dir = util.root_pattern('.github'),
     single_file_support = true,
-    root_dir = function(fname)
-      if fname:match('.github/workflows') then
-        return vim.fn.getcwd()
-      end
-    end,
+    capabilities = {
+      workspace = {
+        didChangeWorkspaceFolders = {
+          dynamicRegistration = true,
+        },
+      },
+    },
   },
-}
+  docs = {
+    description = [[
+https://github.com/lttb/gh-actions-language-server
+Language server for GitHub Actions.
+`gh-actions-language-server` can be installed via `npm`:
+
+```sh
+npm install -g gh-actions-language-server
 ```
 
-</details>
+]],
+},
+}
 
-### Initialize the Language Server
+````
 
-Add the following code to initialize the language server:
+#### Initialise the Language Server
+
+Add the following code to initialise the language server:
 
 ```lua
 require('lspconfig').gh_actions_ls.setup({})
@@ -63,4 +92,4 @@ require('lspconfig').gh_actions_ls.setup({})
 
 ## Credits
 
-- https://github.com/actions/languageservices
+- <https://github.com/actions/languageservices>
