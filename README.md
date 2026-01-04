@@ -4,6 +4,15 @@
 
 A lightweight wrapper around [@actions/languageserver](https://github.com/actions/languageservices/tree/main/languageserver) to simplify installation and usage in CLI tools and LSP (Language Server Protocol) clients.
 
+> [!IMPORTANT]
+> **January 2026**
+> 
+> The official [@actions/languageserver](https://github.com/actions/languageservices/tree/main/languageserver) standalone executable is available as of `v0.3.30` - https://github.com/actions/languageservices/issues/56#issuecomment-3705109878.
+>
+> The Mason Registry (`gh-actions-language-server`) has been updated to reflect it too - https://github.com/mason-org/mason-registry/pull/13000.
+>
+> Please follow the [official README.md](https://github.com/actions/languageservices/tree/main/languageserver#in-neovim) and guidelines to configure GitHub Actions in Neovim.
+
 ## Why?
 
 The `@actions/languageserver` module is published without an executable binary (see [issue #56](https://github.com/actions/languageservices/issues/56)), which makes it less convenient to use directly. This package bridges that gap by providing an easy-to-install binary.
